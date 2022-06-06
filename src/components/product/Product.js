@@ -1,10 +1,11 @@
 import './Product.css';
 
-const Product = ({title,price,image}) => (
+const Product = ({ title, price, image }) => (
     <div className="product-card">
         <div className="product-image">
             <img
                 src={image}
+                alt="blah"
             />
         </div>
         <div className="product-info">
