@@ -1,23 +1,25 @@
+import { useState } from 'react';
 import './Header.css';
-const Header = () =>{
+const Header = ({ categories, changeProductArr }) => {
 
-    return(
+  function setOptionCatHandler(event) {
+    changeProductArr(event.target.value);
+  }
 
-        <nav className="product-filter">
-    <h1>Jackets</h1>
-    
+  return (
+
+    <nav className="product-filter">
+      <h1>Jackets</h1>
+
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select>
-            <option value="/">All Jackets</option>
-            <option value="/">2016</option>
-            <option value="/">jacket</option>
-            <option value="/">Jackets</option>
-            <option value="/">layers</option>
-            <option value="/">Obermeyer</option>
-            <option value="/">Roxy</option>
-            <option value="/">womens</option>
+          <select onChange={setOptionCatHandler}>
+            <option value="/">All products</option>
+            {categories.map((category) => {
+              return <option key={category} value={category}>{category}</option>
+
+            })}
           </select>
         </div>
 
@@ -36,6 +38,6 @@ const Header = () =>{
         </div>
       </div>
     </nav>
-         )
+  )
 }
-    export default Header;
+export default Header;
